@@ -1,3 +1,6 @@
+//flutter run -d chrome
+//flutter build web
+
 //import 'dart:js_util';
 
 import 'package:flutter/material.dart';
@@ -35,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   Itemik _selection = Itemik.varza;
-  ScrollController _scrollController = ScrollController();
+  //ScrollController _scrollController = ScrollController();
 
   void _incrementCounter() {
     setState(() {
@@ -49,19 +52,19 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _scrollToSection2() {
-    setState(() {
-      _scrollController.animateTo(1111,
-          duration: Duration(seconds: 1), curve: Curves.linearToEaseOut);
-    });
-  }
+  // void _scrollToSection2() {
+  //   setState(() {
+  //     _scrollController.animateTo(1111,
+  //         duration: Duration(seconds: 1), curve: Curves.linearToEaseOut);
+  //   });
+  // },
 
-  void _scrollToSection0() {
-    setState(() {
-      _scrollController.animateTo(0,
-          duration: Duration(seconds: 1), curve: Curves.linearToEaseOut);
-    });
-  }
+  // void _scrollToSection0() {
+  //   setState(() {
+  //     _scrollController.animateTo(0,
+  //         duration: Duration(seconds: 1), curve: Curves.linearToEaseOut);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       key: scaffoldKey,
       body: CustomScrollView(
         scrollDirection: Axis.vertical,
-        controller: _scrollController,
+        //controller: _scrollController,
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
@@ -97,14 +100,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 tooltip: '0',
                 onPressed: () {
                   _resetCounter();
-                  _scrollToSection0();
+                  //_scrollToSection0();
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.format_list_numbered),
                 tooltip: 'Scroll to list view',
                 onPressed: () {
-                  _scrollToSection2();
+                  //_scrollToSection2();
                 },
               ),
               PopupMenuButton<Itemik>(
@@ -118,19 +121,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemBuilder: (BuildContext context) => <PopupMenuEntry<Itemik>>[
                   const PopupMenuItem<Itemik>(
                     value: Itemik.dupa,
-                    child: Text('Dupa'),
+                    child: Text('dupa'),
                   ),
                   const PopupMenuItem<Itemik>(
                     value: Itemik.varza,
-                    child: Text('Varza'),
+                    child: Text('varza'),
                   ),
                   const PopupMenuItem<Itemik>(
                     value: Itemik.scoala,
-                    child: Text('Scoala'),
+                    child: Text('scoala'),
                   ),
                   const PopupMenuItem<Itemik>(
                     value: Itemik.ciorba,
-                    child: Text('Ciorba'),
+                    child: Text('ciorba'),
                   ),
                 ],
               ),
@@ -185,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blue[100 * (index + 2 % 9)],
                       child: Text("Grid Item $index"));
                 },
-                childCount: 4,
+                childCount: 4, 
               ),
             ),
           ),
