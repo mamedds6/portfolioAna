@@ -1,0 +1,31 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "flutter build web",
+            "type": "shell",
+            "command": "flutter build web"
+        },
+        {
+            "label": "firebase deploy",
+            "type": "shell",
+            "command": "firebase deploy"
+        },
+        {
+            "label": "!!! web build deploy",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "flutter build web",
+                "firebase deploy"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

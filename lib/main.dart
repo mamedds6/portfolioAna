@@ -5,11 +5,12 @@
 
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:full_screen_image/full_screen_image.dart';
 
 void main() => runApp(MyApp());
 
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
+//final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+//final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
 
 enum Itemik { dupa, varza, scoala, ciorba }
 
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
+      //key: scaffoldKey,
       body: CustomScrollView(
         scrollDirection: Axis.vertical,
         //controller: _scrollController,
@@ -85,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: const Icon(Icons.add_alert),
                 tooltip: 'Show Snackbar',
                 onPressed: () {
-                  scaffoldKey.currentState.showSnackBar(snackBar);
+                  //scaffoldKey.currentState.showSnackBar(snackBar);
                 },
               ),
               IconButton(
@@ -188,14 +189,32 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blue[100 * (index + 2 % 9)],
                       child: Text("Grid Item $index"));
                 },
-                childCount: 4, 
+                childCount: 4,
               ),
             ),
           ),
           SliverToBoxAdapter(
               //empty77
               child: Container(
-            height: 77,
+            height: 444,
+            child: FullScreenWidget(
+              child: Center(
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      "assets/img.jpg",
+                      fit: BoxFit.contain,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      color: Colors.deepOrange,
+                      icon: Icon(Icons.arrow_left),
+                      iconSize: 48.0,
+                    ),
+                  ],
+                ),
+              ),
+            ),
           )),
           SliverSafeArea(
             //listView
@@ -210,7 +229,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 (BuildContext context, int index) {
                   return Container(
                     alignment: Alignment.center,
-                    color: Colors.blue[100+(100 * (index % 6))],//(50 * (index % 4))+ 50],
+                    color: Colors.blue[
+                        100 + (100 * (index % 6))], //(50 * (index % 4))+ 50],
                     child: Text('List Item $index'),
                   );
                 },
@@ -260,3 +280,33 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+/*
+
+hiding address bar...
+
+orientation change? on click? on device spin ofc
+
+https://developers.google.com/web/fundamentals/native-hardware/fullscreen#chrome_for_android
+
+
+!!!!!!!!!!!!!
+https://web.dev/add-manifest/
+
+!! //"minimal-ui", //"fullscreen", //"standalone", //"browser" 
+
+fullscreen	Opens the web application without any browser UI and takes up the entirety of the available display area.
+standalone	Opens the web app to look and feel like a standalone native app. The app runs in its own window, separate from the browser, and hides standard browser UI elements like the URL bar.
+
+An example of a PWA window with standalone display.
+
+minimal-ui	This mode is similar to standalone, but provides the user a minimal set of UI elements for controlling navigation (such as back and reload).
+An example of a PWA window with minimal-ui display.
+
+browser	A standard browser experience.
+
+
+
+https://pub.dev/packages/flutter_inappwebview
+
+*/
